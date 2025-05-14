@@ -1,9 +1,13 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import stays from "@/data/stays";
+import { useLocalSearchParams } from "expo-router";
+import trips from "@/data/trips";
 
 const StayDetails = () => {
-  const stay = stays[0];
+  const { Staydetails } = useLocalSearchParams();
+  const stay = stays.find((stay) => `${stay.id}` === Staydetails);
+  console.log(Staydetails);
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{stay?.name}</Text>
